@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour
     public Vector3 playerPosition;
 
     private float currentSpeed = 10f;
+    private float strafeSpeed = 5f;
     private float turnSpeed = 120f;
     GameObject player;
     const float GRAVITY = 9.81f;
     // Vector3 vicintyOfEnemy = new Vector3(2, 0, 2);
     private float totalTime = 0;
     private float attackTime = 0;
+    RatController enemy;
+    Collider playerCollider;
 
 
     // Use this for initialization
@@ -24,7 +27,7 @@ public class PlayerController : MonoBehaviour
         //playerPosition = new Vector3(0, 0, 0);
         //player.transform.localScale = new Vector3(2, 2, 2);
         player = gameObject;
-
+        playerCollider = gameObject.AddComponent<CapsuleCollider>();
         transform.position = new Vector3(1, 1.5f, 1);
     }
 
@@ -45,45 +48,26 @@ public class PlayerController : MonoBehaviour
         playerPosition = transform.position;
 
         float x = Input.GetAxis("L_XAxis_1"); Debug.Log("X = " + x);
+
+        transform.position += x * strafeSpeed * transform.right * Time.deltaTime;
+
+
         float z = Input.GetAxis("L_YAxis_1"); Debug.Log("z = " + z);
-        Vector3 velocity = transform.forward;//new Vector3(x, 0, z);
+        Vector3 direction = transform.forward;//new Vector3(x, 0, z);
 
-        if (x > .05f || x < -.05f || z > .05f)
+        if (z > .05f)
         {
-            transform.position += currentSpeed * velocity * Time.deltaTime;
-
-            if(x > .7f || x < -.7f )
-                transform.forward = transform.forward + velocity;
-
-            transform.forward = transform.forward + velocity;
+            transform.position += currentSpeed * direction * Time.deltaTime;
+            
+            //transform.forward = transform.forward + velocity;
         }
         if(z < -.05)
         {
-            transform.position -= currentSpeed * velocity * Time.deltaTime;
+            transform.position -= strafeSpeed * direction * Time.deltaTime;
         }
-        
 
-        
-        //print("Yes"); else print("no");
-        //print("Hello" + Input.GetAxis("Horizontal").ToString());
-
-        //player.transform.localRotation = playerRotation;
-
-        /*if (ShouldMoveForward()) { Debug.Log("A Pressed"); MoveForward(); }
-        if (ShouldTurnLeft()) TurnLeft();
-        if (ShouldTurnRight()) TurnRight();
-        if (ShouldMoveBackwards()) MoveBackwards();
         if (ShouldAttack()) Attack();
-
-        
-        Vector3 rotation = new Vector3(Input.GetAxis("R_XAxis_1"), Input.GetAxis("R_YAxis_1"), 0);
-
-        transform.Rotate(rotation * turnSpeed * Time.deltaTime);
-
-        playerPosition += currentSpeed * velocity * Time.deltaTime;
-        //Debug.Log(playerPosition);
         totalTime += Time.deltaTime;
-        //Debug.Log(totalTime);*/
     }
 
     /// <summary>
@@ -168,7 +152,7 @@ public class PlayerController : MonoBehaviour
     private bool ShouldAttack()
     {
         //throw new System.NotImplementedException();
-        return Input.GetMouseButtonDown(0);
+        return Input.GetButton("A_1");
     }
 
     /// <summary>
@@ -176,20 +160,20 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
+       // attackTime = totalTime;
+
         if (totalTime > attackTime + 3)
         {
-            Debug.Log("left Click");
+            Debug.Log("A Pressed");
             Ray playerSight = new Ray(playerPosition, transform.forward);
             RaycastHit information = new RaycastHit();
-
-            attackTime = totalTime;
-
+            
             Debug.DrawRay(transform.position, this.transform.forward, Color.blue);
 
             if (Physics.Raycast(playerSight, out information, 3f))
                 Debug.Log("Hit rat");
 
-            //RatController enemy = information.collider.GetComponent<RatController>();
+            enemy = information.collider.GetComponent<RatController>();
             //throw new System.NotImplementedException(); 
         }
 
