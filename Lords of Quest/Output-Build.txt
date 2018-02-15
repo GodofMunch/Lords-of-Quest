@@ -1,0 +1,11 @@
+﻿1>------ Build started: Project: Lords of Quest, Configuration: Debug Any CPU ------
+1>C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Assets\Scripts\RatController.cs(8,16,8,19): warning CS0169: The field 'RatController.rat' is never used
+1>C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Assets\Scripts\RatController.cs(10,14,10,25): warning CS0169: The field 'RatController.ratCollider' is never used
+1>C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Assets\Scripts\RatController.cs(13,14,13,28): warning CS0649: Field 'RatController.targetCollider' is never assigned to, and will always have its default value null
+1>C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Assets\Scripts\RatController.cs(11,15,11,27): warning CS0169: The field 'RatController.ratRigidBody' is never used
+1>C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Assets\Scripts\CameraController.cs(7,13,7,27): warning CS0169: The field 'CameraController.cameraPosition' is never used
+1>C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Assets\Scripts\RatController.cs(15,15,15,19): warning CS0169: The field 'RatController.goal' is never used
+1>C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Assets\Scripts\RatController.cs(12,16,12,22): warning CS0649: Field 'RatController.target' is never assigned to, and will always have its default value null
+1>C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Assets\Scripts\RatController.cs(9,11,9,23): warning CS0414: The field 'RatController.currentSpeed' is assigned but its value is never used
+1>  Lords of Quest -> C:\Users\t00139303\Documents\GitHub\Lords-of-Quest\Lords of Quest\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
