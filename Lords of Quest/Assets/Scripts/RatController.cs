@@ -8,12 +8,16 @@ public class RatController : MonoBehaviour {
     GameObject rat;
     //float currentSpeed = 2f;
     //Collider ratCollider;
-    //Rigidbody ratRigidBody;
+    Rigidbody ratRigidBody;
     //GameObject target;
     //Collider targetCollider;
     NavMeshAgent navMeshAgent;
-    Transform goal;
+    GameObject goal;
     PlayerController thePlayer;
+    Vector3 positionOfRat;
+    Vector3 positionOfGoal;
+    private int ratHealth = 5;
+
     // Use this for initialization
     void Start () {
         /* rat = gameObject;
@@ -23,13 +27,21 @@ public class RatController : MonoBehaviour {
 
          target.transform.position = new Vector3(20, 2, 20);
          rat.transform.position = new Vector3(0, 2, 0);*/
-        print("HEL;LO");
+        print("HELLO");
+        goal = new GameObject();
+        rat.AddComponent<Rigidbody>();
+        ratRigidBody = rat.GetComponent<Rigidbody>();
+        ratRigidBody.freezeRotation = true;
+        ratRigidBody.useGravity = true;
         navMeshAgent = GetComponent<NavMeshAgent>();
         thePlayer = FindObjectOfType<PlayerController>();
-        goal.position = GameManager.randomPosition();
-        rat = gameObject;
-        rat = navMeshAgent.gameObject;
-        navMeshAgent.destination = goal.position;
+        positionOfRat = navMeshAgent.transform.position;
+        goal.transform.position = GameManager.randomPosition();
+        positionOfGoal = goal.transform.position;
+        navMeshAgent.destination = positionOfGoal;
+
+        if (ratHealth == 0) { }
+            //Destroy(rat);
 
     }
 	
@@ -38,11 +50,12 @@ public class RatController : MonoBehaviour {
 
 
         //navMeshAgent.destination = thePlayer.transform.position;
-        float distanceBetweenRatAndTarget = Vector3.Distance(navMeshAgent.transform.position, goal.position);
+        float distanceBetweenRatAndTarget = Vector3.Distance(navMeshAgent.transform.position, positionOfGoal);
         if (distanceBetweenRatAndTarget<.5f)
         {
-            goal.position = GameManager.randomPosition();
-            navMeshAgent.destination = goal.position;
+            goal.transform.position = GameManager.randomPosition();
+            positionOfGoal = goal.transform.position;
+            navMeshAgent.destination = positionOfGoal;
             
         }
             /* if (rat.transform.position != (target.transform.position - new Vector3(1,0,1)))
@@ -54,7 +67,9 @@ public class RatController : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        /*if(other == targetCollider)
-            target.transform.position = new Vector3(-20, 2, 20);*/
+        if(other.GetComponent<PlayerController>())
+        {
+            ratHealth--;
+        }
     }
 }

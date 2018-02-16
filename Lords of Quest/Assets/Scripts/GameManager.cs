@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    private const int NUM_OF_RATS = 5;
+    private const int NUM_OF_RATS = 4;
     public int ratsSpawned = 1;
     public Transform rat;
+    
 
     // Use this for initialization
     void Start() {
@@ -30,11 +31,13 @@ public class GameManager : MonoBehaviour {
         Instantiate(rat, randomPosition(), Quaternion.identity);
         rat.name = "Rat " + ratsSpawned;
         ratsSpawned++;
+
+        
     }
 
     public static Vector3 randomPosition()
     {
-        Vector3 randomPosition = new Vector3(Random.Range(-25f, 25f), 1, Random.Range(-25, 25));
+        Vector3 randomPosition = new Vector3(Random.Range(-24f, 24f), 1, Random.Range(-24, 24));
 
         return randomPosition;
     }

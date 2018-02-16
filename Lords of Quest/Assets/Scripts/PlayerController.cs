@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float attackTime = 0;
     RatController enemy;
     Collider playerCollider;
+    Rigidbody playerRigidBody;
 
 
     // Use this for initialization
@@ -27,7 +28,10 @@ public class PlayerController : MonoBehaviour
         //playerPosition = new Vector3(0, 0, 0);
         //player.transform.localScale = new Vector3(2, 2, 2);
         player = gameObject;
-        playerCollider = gameObject.AddComponent<CapsuleCollider>();
+        player.AddComponent<Rigidbody>();
+        playerRigidBody = player.GetComponent<Rigidbody>();
+        playerRigidBody.useGravity = true;
+        playerRigidBody.freezeRotation = true;
         transform.position = new Vector3(1, 1.5f, 1);
     }
 
@@ -47,12 +51,12 @@ public class PlayerController : MonoBehaviour
 
         playerPosition = transform.position;
 
-        float x = Input.GetAxis("L_XAxis_1"); Debug.Log("X = " + x);
+        float x = Input.GetAxis("L_XAxis_1");
 
         transform.position += x * strafeSpeed * transform.right * Time.deltaTime;
 
 
-        float z = Input.GetAxis("L_YAxis_1"); Debug.Log("z = " + z);
+        float z = Input.GetAxis("L_YAxis_1");
         Vector3 direction = transform.forward;//new Vector3(x, 0, z);
 
         if (z > .05f)
@@ -70,81 +74,7 @@ public class PlayerController : MonoBehaviour
         totalTime += Time.deltaTime;
     }
 
-    /// <summary>
-    /// This method Tests to see if the player should move forward
-    /// </summary>
-    private bool ShouldMoveForward()
-    {
-
-        //if (Input.GetButton("JoystickButton0")) ;
-        return Input.GetButton("A_1");
-    }
-
-    /// <summary>
-    /// This method moves the player forward
-    /// </summary>
-    private void MoveForward()
-    {
-        Debug.Log("W Pressed");
-        transform.position += currentSpeed * transform.forward * Time.deltaTime;
-    }
-
-    /// <summary>
-    /// This Method tests to see if the player should turn left
-    /// </summary>
-    private bool ShouldTurnLeft()
-    {
-        //throw new System.NotImplementedException();
-        return (Input.GetKey(KeyCode.A));
-    }
-
-    /// <summary>
-    /// This method rotates the player left
-    /// </summary>
-    private void TurnLeft()
-    {
-        //throw new System.NotImplementedException();
-        //Debug.Log("A Pressed");
-        transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
-    }
-
-    /// <summary>
-    /// This Method tests to see if the player should turn right
-    /// </summary>
-    private bool ShouldTurnRight()
-    {
-        // throw new System.NotImplementedException();
-        return Input.GetKey(KeyCode.D);
-    }
-
-    /// <summary>
-    /// This method rotates the player to the right
-    /// </summary>
-    private void TurnRight()
-    {
-        //throw new System.NotImplementedException();
-        //Debug.Log("D Pressed");
-        transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-    }
-
-    /// <summary>
-    /// This Method Tests to see if the player should move backwards
-    /// </summary>
-    private bool ShouldMoveBackwards()
-    {
-        //throw new System.NotImplementedException();
-        return Input.GetKey(KeyCode.S);
-    }
-
-    /// <summary>
-    /// This method moves the player backwards
-    /// </summary>
-    private void MoveBackwards()
-    {
-        //throw new System.NotImplementedException();
-        //Debug.Log("S Pressed");
-        transform.position -= currentSpeed * transform.forward * Time.deltaTime;
-    }
+    
 
     /// <summary>
     /// This method test to see if the player can attack
@@ -152,7 +82,7 @@ public class PlayerController : MonoBehaviour
     private bool ShouldAttack()
     {
         //throw new System.NotImplementedException();
-        return Input.GetButton("A_1");
+        return Input.GetButtonDown("A_1");
     }
 
     /// <summary>
@@ -172,8 +102,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(playerSight, out information, 3f))
                 Debug.Log("Hit rat");
-
-            enemy = information.collider.GetComponent<RatController>();
+            
             //throw new System.NotImplementedException(); 
         }
 
