@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     private const int NUM_OF_RATS = 4;
-    public int ratsSpawned = 1;
+    public static int ratsSpawned = 1;
     public Transform rat;
     
 
@@ -15,14 +15,14 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (ratsSpawned < NUM_OF_RATS)
+        if (ratsSpawned <= NUM_OF_RATS)
             spawnRat();
     }
 
     public void spawnRat()
     {
         Transform newRat = Instantiate(rat, randomPosition(), Quaternion.identity);
-        newRat.name = "Rat " + ratsSpawned;
+        newRat.name = "Rat " + (ratsSpawned + 1);
         ratsSpawned++;
     }
 
@@ -33,12 +33,7 @@ public class GameManager : MonoBehaviour {
         return randomPosition;
     }
 
-    public  void setRatsSpawned(int ratsSpawned)
-    {
-        this.ratsSpawned = ratsSpawned; 
-    }
-
-    public int getRatsSpawned()
+    public static int getRatsSpawned()
     {
         return ratsSpawned;
     }

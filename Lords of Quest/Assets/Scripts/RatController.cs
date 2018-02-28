@@ -16,6 +16,7 @@ public class RatController : MonoBehaviour {
     PlayerController thePlayer;
     Vector3 positionOfRat;
     Vector3 positionOfGoal;
+    static int ratsSpawned;
     public int ratHealth = 5;
 
     // Use this for initialization
@@ -29,7 +30,7 @@ public class RatController : MonoBehaviour {
          rat.transform.position = new Vector3(0, 2, 0);*/
         print("HELLO");
         goal = new GameObject();
-
+        goal.name = "Goal for Rat " + GameManager.ratsSpawned;
         rat = gameObject;
         /*rat.AddComponent<Rigidbody>();
         ratRigidBody = rat.GetComponent<Rigidbody>();
