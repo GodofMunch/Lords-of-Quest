@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-
     }
 
     // Update is called once per frame
@@ -22,17 +21,9 @@ public class GameManager : MonoBehaviour {
 
     public void spawnRat()
     {
-        /*GameObject rat = new GameObject();
-        rat.transform.position = randomPosition();
-        rat.AddComponent<RatController>();
-        rat.name = "Rat " + ratsSpawned;
-        ratsSpawned++;*/
-
-        Instantiate(rat, randomPosition(), Quaternion.identity);
-        rat.name = "Rat " + ratsSpawned;
+        Transform newRat = Instantiate(rat, randomPosition(), Quaternion.identity);
+        newRat.name = "Rat " + ratsSpawned;
         ratsSpawned++;
-
-        
     }
 
     public static Vector3 randomPosition()

@@ -16,7 +16,7 @@ public class RatController : MonoBehaviour {
     PlayerController thePlayer;
     Vector3 positionOfRat;
     Vector3 positionOfGoal;
-    private int ratHealth = 5;
+    public int ratHealth = 5;
 
     // Use this for initialization
     void Start () {
@@ -29,19 +29,26 @@ public class RatController : MonoBehaviour {
          rat.transform.position = new Vector3(0, 2, 0);*/
         print("HELLO");
         goal = new GameObject();
-        rat.AddComponent<Rigidbody>();
+
+        rat = gameObject;
+        /*rat.AddComponent<Rigidbody>();
         ratRigidBody = rat.GetComponent<Rigidbody>();
         ratRigidBody.freezeRotation = true;
-        ratRigidBody.useGravity = true;
+        ratRigidBody.useGravity = true;*/
+
         navMeshAgent = GetComponent<NavMeshAgent>();
+
         thePlayer = FindObjectOfType<PlayerController>();
+
         positionOfRat = navMeshAgent.transform.position;
         goal.transform.position = GameManager.randomPosition();
         positionOfGoal = goal.transform.position;
         navMeshAgent.destination = positionOfGoal;
 
-        if (ratHealth == 0) { }
-            //Destroy(rat);
+        Debug.Log(ratHealth);
+
+       
+           
 
     }
 	
@@ -56,20 +63,17 @@ public class RatController : MonoBehaviour {
             goal.transform.position = GameManager.randomPosition();
             positionOfGoal = goal.transform.position;
             navMeshAgent.destination = positionOfGoal;
-            
         }
-            /* if (rat.transform.position != (target.transform.position - new Vector3(1,0,1)))
-         {
-             transform.LookAt(target.transform);
-             transform.position += currentSpeed * transform.forward * Time.deltaTime;
-         }*/
+
+        if (ratHealth == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.GetComponent<PlayerController>())
-        {
+        if (collision.gameObject.GetComponent<PlayerController>())
             ratHealth--;
-        }
     }
 }

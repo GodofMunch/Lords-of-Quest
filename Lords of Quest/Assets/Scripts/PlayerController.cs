@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float attackTime = 0;
     RatController enemy;
     Collider playerCollider;
-    Rigidbody playerRigidBody;
+    public Rigidbody playerRigidBody;
 
 
     // Use this for initialization
@@ -71,7 +71,14 @@ public class PlayerController : MonoBehaviour
         }
 
         if (ShouldAttack()) Attack();
-        totalTime += Time.deltaTime;
+        //totalTime += Time.deltaTime;
+
+        if (Input.GetButtonDown("A_1"))
+        {
+            Debug.Log("A Pressed-oh");
+            playerRigidBody.AddForce(new Vector3(0, (20000 * Time.deltaTime), 0));
+        }
+        if (ShouldJump()) Jump();
     }
 
     
@@ -82,19 +89,32 @@ public class PlayerController : MonoBehaviour
     private bool ShouldAttack()
     {
         //throw new System.NotImplementedException();
-        return Input.GetButtonDown("A_1");
+        return Input.GetButtonDown("X_1");
     }
 
     /// <summary>
     /// This method Governs how the player attacks
     /// </summary>
+    /// 
+
+    private bool ShouldJump()
+    {
+        //Debug.Log("A Pressed-oh");
+        return Input.GetButtonDown("A_1");
+    }
+
+    private void Jump()
+    {
+        if(playerRigidBody.transform.position.y == 1)
+            playerRigidBody.AddForce(new Vector3(0, (10000 *2* Time.deltaTime), 0));
+    }
     private void Attack()
     {
-       // attackTime = totalTime;
+        attackTime = totalTime;
 
         if (totalTime > attackTime + 3)
         {
-            Debug.Log("A Pressed");
+            Debug.Log("X pressed");
             Ray playerSight = new Ray(playerPosition, transform.forward);
             RaycastHit information = new RaycastHit();
             
