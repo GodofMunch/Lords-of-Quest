@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7dc5be94f0d484f8f6f424ba94f5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rat: {fileID: 0}
+  rat: {fileID: 1184211706}
 --- !u!1 &225614892
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +305,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -1, y: 1.2}
-  m_SizeDelta: {x: 2, y: 0.5}
+  m_SizeDelta: {x: 2, y: 0.1}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &225614894
 MonoBehaviour:
@@ -396,8 +396,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0.9999999, y: -0.000000017949446}
-  m_SizeDelta: {x: 1.95, y: 0.45}
+  m_AnchoredPosition: {x: 0.9999999, y: -0.000000011163934}
+  m_SizeDelta: {x: 1.95, y: 0.095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &236247024
 MonoBehaviour:
@@ -531,7 +531,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.00000047683716, y: 0.000000012736459}
-  m_SizeDelta: {x: 1.95, y: 0.45}
+  m_SizeDelta: {x: 1.95, y: 0.095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &683739761
 MonoBehaviour:
@@ -779,7 +779,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.0000000040381565}
-  m_SizeDelta: {x: 2, y: 0.5}
+  m_SizeDelta: {x: 2, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &941816128
 MonoBehaviour:
@@ -911,6 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec6d2a36b867114592f4da1d3463ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeOfAttack: 0
 --- !u!4 &1184211706 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4838012612799684, guid: 9428cfaed68bfa747ad4ef47b3247476,
@@ -967,9 +968,12 @@ MonoBehaviour:
   redBack: {fileID: 683739759}
   blackBack: {fileID: 941816126}
   maxHealth: 5
-  currentHealth: 3
+  currentHealth: 5
   player: {fileID: 0}
   playerLocation: {fileID: 0}
+  attackTimer: 0
+  totalTime: 0
+  waitTimer: 3
 --- !u!1 &1570578177
 GameObject:
   m_ObjectHideFlags: 0

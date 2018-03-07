@@ -14,8 +14,7 @@ public class RatController : MonoBehaviour {
     Vector3 positionOfRat;
     Vector3 positionOfGoal;
     static int ratsSpawned;
-    public static int ratHealth = 5;
-
+    public float timeOfAttack;
     // Use this for initialization
     void Start () {
         
@@ -24,7 +23,7 @@ public class RatController : MonoBehaviour {
         goal.name = "Goal for Rat " + GameManager.ratsSpawned;
         rat = gameObject;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        healthBar = FindObjectOfType<HealthBar>();
+        healthBar = GetComponent<HealthBar>();
         thePlayer = FindObjectOfType<PlayerController>();
 
         positionOfRat = navMeshAgent.transform.position;
@@ -37,7 +36,9 @@ public class RatController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+
+        timeOfAttack += Time.deltaTime;
+
         float distanceBetweenRatAndTarget = Vector3.Distance(navMeshAgent.transform.position, positionOfGoal);
         if (distanceBetweenRatAndTarget<.5f)
         {
@@ -51,16 +52,7 @@ public class RatController : MonoBehaviour {
     {
         if (collision.gameObject.GetComponent<PlayerController>())
         {
-            ratHealth--;
-            healthBar.takeDamage();
-
-            //if (ratHealth == 0)
-                //GameManager.DestroyRat();
+            healthBar.takeDamage(1, timeOfAttack);
         }
-    }
-
-    public static float getHealth()
-    {
-        return ratHealth;
     }
 }

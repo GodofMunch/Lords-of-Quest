@@ -24,9 +24,6 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        //playerPosition = new Vector3(0, 0, 0);
-        //player.transform.localScale = new Vector3(2, 2, 2);
         player = gameObject;
         player.AddComponent<Rigidbody>();
         playerRigidBody = player.GetComponent<Rigidbody>();
@@ -43,11 +40,8 @@ public class PlayerController : MonoBehaviour
         Vector3 turnDirection = new Vector3(0, xTurn, 0);
 
         if (xTurn > .05f || xTurn < -.5f)
-        {
             transform.Rotate(turnDirection.normalized * turnSpeed * Time.deltaTime);
-            //Debug.Log(transform.forward);
-
-        }
+        
 
         playerPosition = transform.position;
 
@@ -60,18 +54,13 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = transform.forward;//new Vector3(x, 0, z);
 
         if (z > .05f)
-        {
             transform.position += currentSpeed * direction * Time.deltaTime;
             
-            //transform.forward = transform.forward + velocity;
-        }
         if(z < -.05)
-        {
             transform.position -= strafeSpeed * direction * Time.deltaTime;
-        }
 
         if (ShouldAttack()) Attack();
-        //totalTime += Time.deltaTime;
+        
 
         if (Input.GetButtonDown("A_1"))
         {
@@ -122,8 +111,6 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(playerSight, out information, 3f))
                 Debug.Log("Hit rat");
-            
-            //throw new System.NotImplementedException(); 
         }
 
         else
