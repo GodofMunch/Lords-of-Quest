@@ -11,9 +11,9 @@ public class HealthBar : MonoBehaviour {
     public float currentHealth;
     public PlayerController player;
     public Transform playerLocation;
-    public float attackTimer = 3;
     public float totalTime;
-    public float waitTimer = 3f;
+    public float coolDown = 3f;
+    public float nextAttack;
     private bool attacked;
     private bool canAttack;
     private GameObject parent;
@@ -35,18 +35,13 @@ public class HealthBar : MonoBehaviour {
         blackBack.transform.LookAt(playerLocation);
 
         totalTime += Time.deltaTime;
-        if (attacked) { 
-
-            attackTimer -= Time.deltaTime;
-            
-            if(attackTimer <= 0)
-            {
-                canAttack = true;
-                attackTimer = 3f;
-            }
-
-            
+        
+        if(attacked && nextAttack <= totalTime)
+        {
+            nextAttack = totalTime + coolDown;
+            canAttack = true;  
         }
+        
 	}
 
     public void takeDamage(int damage, float timeOfAttack)
@@ -66,11 +61,8 @@ public class HealthBar : MonoBehaviour {
                     Destroy(parent);
                 }
             }
+            canAttack = false;
+            attacked = false;
         }
-    }
-
-    public bool isWaiting(float timeOfAttack)
-    {
-        return true;
     }
 }

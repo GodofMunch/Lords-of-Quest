@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("A_1"))
         {
             Debug.Log("A Pressed-oh");
-            playerRigidBody.AddForce(new Vector3(0, (20000 * Time.deltaTime), 0));
+            playerRigidBody.AddForce(new Vector3(0, (200 - (GRAVITY * Time.deltaTime)), 0));
         }
         if (ShouldJump()) Jump();
     }

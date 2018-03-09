@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 
     public static Vector3 randomPosition()
     {
-        Vector3 randomPosition = new Vector3(Random.Range(-24f, 24f), 1, Random.Range(-24, 24));
+        Vector3 randomPosition = new Vector3(Random.Range(-23f, 23f), 1, Random.Range(-23, 23));
 
         return randomPosition;
     }
