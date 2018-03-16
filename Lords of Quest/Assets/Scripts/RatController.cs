@@ -27,7 +27,7 @@ public class RatController : MonoBehaviour {
         thePlayer = FindObjectOfType<PlayerController>();
 
         positionOfRat = navMeshAgent.transform.position;
-        goal.transform.position = GameManager.randomPosition();
+        goal.transform.position = GameManager.randomForestPosition();
         positionOfGoal = goal.transform.position;
         navMeshAgent.destination = positionOfGoal;
 
@@ -42,7 +42,7 @@ public class RatController : MonoBehaviour {
         float distanceBetweenRatAndTarget = Vector3.Distance(navMeshAgent.transform.position, positionOfGoal);
         if (distanceBetweenRatAndTarget<.5f)
         {
-            goal.transform.position = GameManager.randomPosition();
+            goal.transform.position = GameManager.randomForestPosition();
             positionOfGoal = goal.transform.position;
             navMeshAgent.destination = positionOfGoal;
         }

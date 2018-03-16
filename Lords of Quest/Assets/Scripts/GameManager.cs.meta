@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 2a7dc5be94f0d484f8f6f424ba94f5e5
-timeCreated: 1520377866
-licenseType: Free
+timeCreated: 1521193995
+licenseType: Pro
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - rat: {fileID: 4838012612799684, guid: 9428cfaed68bfa747ad4ef47b3247476, type: 2}
+  - house: {fileID: 1675897732989262, guid: 230c15a4e40e05345a9dc7269542645f, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

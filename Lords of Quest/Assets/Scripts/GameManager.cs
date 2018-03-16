@@ -5,17 +5,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     private const int NUM_OF_RATS = 4;
-    private const int NUM_OF_HOUSES = 4;
+    private const int NUM_OF_HOUSES = 5;
     public static int ratsSpawned = 1;
-    public static int housesSpawned = 1;
+    public static int housesSpawned;
 
     public Transform rat;
-    public Transform house;
+    public GameObject house;
     GameObject map;
     
 
     // Use this for initialization
     void Start() {
+        spawnHouses();
+  
     }
 
     // Update is called once per frame
@@ -23,22 +25,43 @@ public class GameManager : MonoBehaviour {
         if (ratsSpawned <= NUM_OF_RATS)
             spawnRat();
 
-        if (housesSpawned <= NUM_OF_HOUSES)
-            spawnHouse();
+            
     }
 
     public void spawnRat()
     {
         Transform newRat = Instantiate(rat, randomForestPosition(), Quaternion.identity);
-        newRat.name = "Rat " + (ratsSpawned + 1);
+        newRat.name = "Rat " + (ratsSpawned + 1).ToString();
         ratsSpawned++;
     }
 
-    public void spawnHouse()
+    public void spawnHouses()
     {
-        Transform newHouse = Instantiate(house, randomVillagePosition(), Quaternion.identity);
-        newHouse.name = "House" + (housesSpawned + 1);
-        housesSpawned++;
+
+        float houseWidth = 25f;
+        float alleyWayWidth = 5f;
+        float baseXPositionOfHouse = 100f;
+        float baseZPositionOfHouse = -309f;
+        var houseRotation = transform.rotation.eulerAngles;
+        houseRotation.z = 45f;
+
+        if (house)
+            for (int housesSpawned = 1; housesSpawned < NUM_OF_HOUSES; housesSpawned++)
+            {
+                baseXPositionOfHouse += houseWidth + alleyWayWidth;
+                GameObject newHouse = Instantiate(house, new Vector3(baseXPositionOfHouse, 1.5f, baseZPositionOfHouse), house.transform.rotation ); //Quaternion.identity
+                newHouse.name = "House" + (housesSpawned + 1).ToString();
+
+                if (housesSpawned == NUM_OF_HOUSES -1)
+                {
+                    //houseRotation.y = houseRotation.y * Mathf.Deg2Rad;
+
+                    newHouse.transform.rotation = Quaternion.EulerAngles(x: 0, y: (45f * Mathf.Deg2Rad), z: 0);
+                    newHouse.transform.position = new Vector3(newHouse.transform.position.x + 6.25f, newHouse.transform.position.y, newHouse.transform.position.z+ 10f);
+                }
+                
+            }
+        else print("NO HOuse");
     }
 
     public static Vector3 randomForestPosition()
@@ -46,11 +69,6 @@ public class GameManager : MonoBehaviour {
         Vector3 randomPosition = new Vector3(Random.Range(-23f, 23f), 1, Random.Range(-23, 23));
 
         return randomPosition;
-    }
-
-    public static Vector3 randomVillagePosition()
-    {
-        Vector3 randomPosition = new Vector3(Random.Range())
     }
 
     public static int getRatsSpawned()
