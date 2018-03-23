@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     private const int NUM_OF_RATS = 4;
-    private const int NUM_OF_HOUSES = 5;
+    private const int NUM_OF_HOUSES_X = 5;
+    private const int NUM_OF_HOUSES_Z = 5;
     public static int ratsSpawned = 1;
     public static int housesSpawned;
 
@@ -46,13 +47,32 @@ public class GameManager : MonoBehaviour {
         houseRotation.z = 45f;
 
         if (house)
-            for (int housesSpawned = 1; housesSpawned < NUM_OF_HOUSES; housesSpawned++)
+            for (int housesSpawned_X = 1; housesSpawned_X <= NUM_OF_HOUSES_X; housesSpawned_X++)
             {
-                baseXPositionOfHouse += houseWidth + alleyWayWidth;
-                GameObject newHouse = Instantiate(house, new Vector3(baseXPositionOfHouse, 1.5f, baseZPositionOfHouse), house.transform.rotation ); //Quaternion.identity
-                newHouse.name = "House" + (housesSpawned + 1).ToString();
+                GameObject newHouse = gameObject;
+                for (int housesSpawned_Z = 1; housesSpawned_Z < NUM_OF_HOUSES_Z; housesSpawned_Z++)
+                {
+                    baseZPositionOfHouse += houseWidth + alleyWayWidth;
 
-                if (housesSpawned == NUM_OF_HOUSES -1)
+                    if (housesSpawned_X == 1 || housesSpawned_X == 5)
+                    {
+                        newHouse = Instantiate(house, new Vector3(baseXPositionOfHouse, 1.5f, baseZPositionOfHouse), house.transform.rotation);
+                        newHouse.name = "House" + (housesSpawned_Z) + " Y".ToString();
+                        newHouse.transform.rotation = Quaternion.EulerAngles(x: 0, y: (90f * Mathf.Deg2Rad), z: 0);
+                    }
+                }
+
+
+                baseZPositionOfHouse = -309f;
+                baseXPositionOfHouse += houseWidth + alleyWayWidth;
+
+                if (housesSpawned_X == 1 || housesSpawned_X == 4) { 
+                    newHouse = Instantiate(house, new Vector3(baseXPositionOfHouse, 1.5f, baseZPositionOfHouse), house.transform.rotation); //Quaternion.identity
+                    newHouse.name = "House" + (housesSpawned_X + 1) + " X".ToString();
+                }
+                
+
+                if (housesSpawned_X == NUM_OF_HOUSES_X -1)
                 {
                     //houseRotation.y = houseRotation.y * Mathf.Deg2Rad;
 
@@ -61,7 +81,7 @@ public class GameManager : MonoBehaviour {
                 }
                 
             }
-        else print("NO HOuse");
+        else print("NO House");
     }
 
     public static Vector3 randomForestPosition()

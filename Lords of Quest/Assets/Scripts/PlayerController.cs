@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = player.GetComponent<Rigidbody>();
         playerRigidBody.useGravity = true;
         playerRigidBody.freezeRotation = true;
-        transform.position = new Vector3(1, 1.5f, 1);
+        transform.position = new Vector3(145, -4.5f, -240f);
     }
 
     // Update is called once per frame
