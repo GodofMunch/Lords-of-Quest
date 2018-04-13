@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour {
     public Transform rat;
     public GameObject house;
     GameObject map;
+    public GameObject canvas;
     
 
     // Use this for initialization
     void Start() {
         spawnHouses();
         spawnWalls();
+        canvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +28,11 @@ public class GameManager : MonoBehaviour {
         if (ratsSpawned <= NUM_OF_RATS)
             spawnRat();
 
-            
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            canvas.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void spawnRat()
@@ -61,7 +67,7 @@ public class GameManager : MonoBehaviour {
                     }
                     if (housesSpawned_X == 1)
                     {
-                        newHouse.transform.rotation = Quaternion.EulerAngles(x: 0, y: (90f * Mathf.Deg2Rad), z: 0);
+                        newHouse.transform.rotation = Quaternion.Euler( 0, (90f * Mathf.Deg2Rad), 0);
                     }
                 }
 
@@ -82,8 +88,8 @@ public class GameManager : MonoBehaviour {
                 {
                     //houseRotation.y = houseRotation.y * Mathf.Deg2Rad;
 
-                    newHouse.transform.rotation = Quaternion.EulerAngles(x: 0, y: (315f * Mathf.Deg2Rad), z: 0);
-                    newHouse.transform.position = new Vector3(newHouse.transform.position.x-12.5f, newHouse.transform.position.y, newHouse.transform.position.z - 6.5f);
+                    newHouse.transform.rotation = Quaternion.Euler( 0, (315f * Mathf.Deg2Rad), 0);
+                    newHouse.transform.position = new Vector3(newHouse.transform.position.x-12.5f, newHouse.transform.position.y, newHouse.transform.position.z);
                 }
                 
             }
@@ -93,15 +99,12 @@ public class GameManager : MonoBehaviour {
     public void spawnWalls()
     {
         Vector3[] wallPositions = {new Vector3(237, -3.5f, -252.60f),
-                                   new Vector3(-200, -3.5f, 0),
+                                   new Vector3(156.9f, -3.5f, -333f),
                                    new Vector3(77.48f, -3.5f, -252.60f),
                                    new Vector3(120, -3.5f, 360) };
 
 
-        Quaternion[] wallRotations = {new Quaternion(0,0,0,0),
-                                      new Quaternion(0,90,0,0),
-                                      new Quaternion(0,0,0,0),
-                                      new Quaternion(0,90,0,0)};
+        float[] yAxisWallRotation = { 0f, 90f, 0f, 90f };
 
         for (int i = 0; i < 4; i++) {
             GameObject wall;
@@ -109,7 +112,7 @@ public class GameManager : MonoBehaviour {
             wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
             wall.transform.localScale = new Vector3(1.60f, 20, 160);
             wall.transform.position = wallPositions[i];
-            wall.transform.rotation = wallRotations[i];
+            wall.transform.rotation = Quaternion.Euler(0, yAxisWallRotation[i], 0);
             wall.name = "Wall " + (i + 1);
         }
     }
