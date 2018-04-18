@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public GameObject house;
     GameObject map;
     public GameObject canvas;
+    bool paused = false;
     
 
     // Use this for initialization
@@ -28,10 +29,19 @@ public class GameManager : MonoBehaviour {
         if (ratsSpawned <= NUM_OF_RATS)
             spawnRat();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!paused && Input.GetButtonDown("Start_1"))
         {
             canvas.SetActive(true);
             Time.timeScale = 0;
+            paused = true;
+        }
+
+        else if(paused && Input.GetButtonDown("Start_1"))
+        {
+            canvas.SetActive(false);
+            Time.timeScale = 1;
+            paused = false;
+            GUIHandler menu = new GUIHandler();
         }
     }
 
@@ -63,7 +73,7 @@ public class GameManager : MonoBehaviour {
                     {
                         newHouse = Instantiate(house, new Vector3(baseXPositionOfHouse, 1.5f, baseZPositionOfHouse), house.transform.rotation);
                         newHouse.name = "House" + (housesSpawned_Z) + " Z".ToString();
-                        newHouse.transform.rotation = Quaternion.EulerAngles(x: 0, y: (270f * Mathf.Deg2Rad), z: 0);
+                        newHouse.transform.rotation = Quaternion.Euler(0, (270f * Mathf.Deg2Rad), 0);
                     }
                     if (housesSpawned_X == 1)
                     {

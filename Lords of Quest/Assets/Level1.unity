@@ -1820,6 +1820,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847ab5ec6154e7948904a73bb3bff775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  inventoryButton: {fileID: 1115833612}
+  resumeButton: {fileID: 1685686824}
 --- !u!1 &1936481439
 GameObject:
   m_ObjectHideFlags: 0
