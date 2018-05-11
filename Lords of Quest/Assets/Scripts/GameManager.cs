@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -9,12 +10,15 @@ public class GameManager : MonoBehaviour {
     private const int NUM_OF_HOUSES_Z = 5;
     public static int ratsSpawned = 1;
     public static int housesSpawned;
-
+    public Text noOfPelts;
+    public Texture2D wallTexture;
     public Transform rat;
     public GameObject house;
     GameObject map;
+    
     public GameObject canvas;
     bool paused = false;
+    public static int peltsCollected = 0;
     
 
     // Use this for initialization
@@ -28,7 +32,7 @@ public class GameManager : MonoBehaviour {
     void Update() {
         if (ratsSpawned <= NUM_OF_RATS)
             spawnRat();
-
+        noOfPelts.text = peltsCollected.ToString();
         if (!paused && Input.GetButtonDown("Start_1"))
         {
             canvas.SetActive(true);
@@ -43,6 +47,9 @@ public class GameManager : MonoBehaviour {
             paused = false;
             GUIHandler menu = new GUIHandler();
         }
+
+        //if(peltsCollected == 0)
+
     }
 
     public void spawnRat()
@@ -119,11 +126,13 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < 4; i++) {
             GameObject wall;
 
+            
             wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
             wall.transform.localScale = new Vector3(1.60f, 20, 160);
             wall.transform.position = wallPositions[i];
             wall.transform.rotation = Quaternion.Euler(0, yAxisWallRotation[i], 0);
             wall.name = "Wall " + (i + 1);
+            wall.GetComponent<Renderer>().material.mainTexture = wallTexture;
         }
     }
 

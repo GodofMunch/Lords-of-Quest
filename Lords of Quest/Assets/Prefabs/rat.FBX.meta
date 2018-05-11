@@ -1,0 +1,233 @@
+fileFormatVersion: 2
+guid: 86a16a14e07052d438b7c9028e1d603e
+timeCreated: 1526062532
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: back_left_claw_centre
+    100002: back_left_claw_left
+    100004: back_left_claw_right
+    100006: back_left_leg
+    100008: back_right_claw_centre
+    100010: back_right_claw_left
+    100012: back_right_claw_right
+    100014: back_right_leg
+    100016: front_left_claw_centre
+    100018: front_left_claw_left
+    100020: front_left_claw_right
+    100022: front_left_leg
+    100024: front_right_claw_centre
+    100026: front_right_claw_left
+    100028: front_right_claw_right
+    100030: front_right_leg
+    100032: left_ear
+    100034: left_ear_hole
+    100036: Left_eye
+    100038: //RootNode
+    100040: rat_body
+    100042: rat_butt
+    100044: rat_head
+    100046: right_ear
+    100048: right_ear_hole
+    100050: right_eye
+    100052: tail
+    400000: back_left_claw_centre
+    400002: back_left_claw_left
+    400004: back_left_claw_right
+    400006: back_left_leg
+    400008: back_right_claw_centre
+    400010: back_right_claw_left
+    400012: back_right_claw_right
+    400014: back_right_leg
+    400016: front_left_claw_centre
+    400018: front_left_claw_left
+    400020: front_left_claw_right
+    400022: front_left_leg
+    400024: front_right_claw_centre
+    400026: front_right_claw_left
+    400028: front_right_claw_right
+    400030: front_right_leg
+    400032: left_ear
+    400034: left_ear_hole
+    400036: Left_eye
+    400038: //RootNode
+    400040: rat_body
+    400042: rat_butt
+    400044: rat_head
+    400046: right_ear
+    400048: right_ear_hole
+    400050: right_eye
+    400052: tail
+    2300000: back_left_claw_centre
+    2300002: back_left_claw_left
+    2300004: back_left_claw_right
+    2300006: back_left_leg
+    2300008: back_right_claw_centre
+    2300010: back_right_claw_left
+    2300012: back_right_claw_right
+    2300014: back_right_leg
+    2300016: front_left_claw_centre
+    2300018: front_left_claw_left
+    2300020: front_left_claw_right
+    2300022: front_left_leg
+    2300024: front_right_claw_centre
+    2300026: front_right_claw_left
+    2300028: front_right_claw_right
+    2300030: front_right_leg
+    2300032: left_ear
+    2300034: left_ear_hole
+    2300036: Left_eye
+    2300038: rat_body
+    2300040: rat_butt
+    2300042: rat_head
+    2300044: right_ear
+    2300046: right_ear_hole
+    2300048: right_eye
+    2300050: tail
+    3300000: back_left_claw_centre
+    3300002: back_left_claw_left
+    3300004: back_left_claw_right
+    3300006: back_left_leg
+    3300008: back_right_claw_centre
+    3300010: back_right_claw_left
+    3300012: back_right_claw_right
+    3300014: back_right_leg
+    3300016: front_left_claw_centre
+    3300018: front_left_claw_left
+    3300020: front_left_claw_right
+    3300022: front_left_leg
+    3300024: front_right_claw_centre
+    3300026: front_right_claw_left
+    3300028: front_right_claw_right
+    3300030: front_right_leg
+    3300032: left_ear
+    3300034: left_ear_hole
+    3300036: Left_eye
+    3300038: rat_body
+    3300040: rat_butt
+    3300042: rat_head
+    3300044: right_ear
+    3300046: right_ear_hole
+    3300048: right_eye
+    3300050: tail
+    4300000: rat_body
+    4300002: rat_butt
+    4300004: rat_head
+    4300006: Left_eye
+    4300008: right_eye
+    4300010: left_ear
+    4300012: right_ear
+    4300014: left_ear_hole
+    4300016: right_ear_hole
+    4300018: front_left_claw_left
+    4300020: front_left_claw_centre
+    4300022: front_left_claw_right
+    4300024: front_left_leg
+    4300026: front_right_claw_centre
+    4300028: front_right_claw_left
+    4300030: front_right_claw_right
+    4300032: front_right_leg
+    4300034: back_left_claw_centre
+    4300036: back_left_claw_left
+    4300038: back_left_claw_right
+    4300040: back_right_claw_centre
+    4300042: back_right_claw_left
+    4300044: back_right_claw_right
+    4300046: back_right_leg
+    4300048: back_left_leg
+    4300050: tail
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #71'
+    second: {fileID: 2100000, guid: eadf8dc559b8e05468d5cb10da72e30e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #72'
+    second: {fileID: 2100000, guid: 269759cf2119b76448d63275c94ae16b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 36cf02d0ced062e45a981686a5e7e77c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

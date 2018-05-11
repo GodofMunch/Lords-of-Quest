@@ -1,0 +1,18 @@
+What i couldnt implement was a cutscene where the NPC asks you to kill 5 rats in the 
+forest and a 'Congratulations' cutscene.
+
+to kill the rats just collide with them.
+
+As it stands there is no 'WIN' to the game.
+
+Also i credit David Herlihy, 2nd yr multimedia with the creation of the blacksmith NPC 
+
+I could not get the menu to read the back button once the main two buttons were made in active so 
+therefore if you you need to go out of the menu you will have to click the back button with a mouse as the 
+game is designed for use with a controller
+
+controls are :  Left Analog  = movement(Player and menu)
+		Right analog = Look
+		Start        = Pause
+		'A'          = Jump (Importing of the .fbx of the main character broke this)
+

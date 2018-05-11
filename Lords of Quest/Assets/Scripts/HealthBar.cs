@@ -58,6 +58,7 @@ public class HealthBar : MonoBehaviour {
 
                 if(currentHealth == 0)
                 {
+                    GameManager.peltsCollected++;
                     Destroy(parent);
                 }
             }

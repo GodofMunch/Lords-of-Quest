@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     Vector3 cameraPosition;
-    GameObject camera;
+    public GameObject camera; 
     public PlayerController player;
     public Transform playerPosition;
     private const float TURN_SPEED = 20f;
@@ -16,7 +16,6 @@ public class CameraController : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        camera = gameObject;
         //player = GetComponent<PlayerController>();
         playerPosition = player.transform;
     }

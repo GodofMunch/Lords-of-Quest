@@ -65,12 +65,27 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("A_1"))
         {
             Debug.Log("A Pressed-oh");
-            playerRigidBody.AddForce(new Vector3(0, (200 - (GRAVITY * Time.deltaTime)), 0));
+            if(grounded())
+                playerRigidBody.AddForce(new Vector3(0, (200 - (GRAVITY * Time.deltaTime)), 0));
         }
         if (ShouldJump()) Jump();
     }
 
-    
+    public bool grounded()
+    {
+        bool grounded;
+
+        Ray groundCheck = new Ray(playerPosition, -transform.up);
+        RaycastHit information = new RaycastHit();
+
+        Debug.DrawRay(transform.position, - this.transform.up, Color.blue);
+
+        if (Physics.Raycast(groundCheck, out information, 3f))
+            grounded = true;
+        else
+            grounded = false;
+        return grounded;
+    }
 
     /// <summary>
     /// This method test to see if the player can attack
